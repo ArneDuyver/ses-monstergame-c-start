@@ -6,7 +6,7 @@
 void play_turn(Character *player, Monster *monster, int choice)
 {
   srand(time(NULL));                     // Zorgt voor willekeurigheid per spelronde
-  int monster_attack = (rand() % 4) + 1; // 1 tot 4 schade
+  int monster_attack = (rand() % 4) + 1; // Monster doet tussen 1 en 4 schade
 
   switch (choice)
   {
@@ -31,8 +31,8 @@ void play_turn(Character *player, Monster *monster, int choice)
     break;
   }
   case 3:
-  {                             // Lucky potion
-    int outcome = rand() % 100; // Willekeurig getal 0-99
+  {                             // Lucky potion drinken
+    int outcome = rand() % 100; // Willekeurig getal tussen 0-99
     if (outcome < 10)
     {
       player->hp += 4;

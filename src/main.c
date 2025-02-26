@@ -1,12 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "game.h"
 
-int main()
+int main(int argc, char *argv[])
 {
-  Character player = {10}; // Speler start met 10 HP
-  Monster monster = {10};  // Monster start met 10 HP
+  int starting_hp = 10; // Standaard HP
+
+  // Zoek naar de flag "--hp" en haal de volgende parameter als start HP
+  for (int i = 1; i < argc; i++)
+  {
+    if (strcmp(argv[i], "--hp") == 0 && i + 1 < argc)
+    {
+      starting_hp = atoi(argv[i + 1]);
+      break;
+    }
+  }
+
+  Character player = {starting_hp};
+  Monster monster = {10};
 
   printf("Welkom bij het gevechtsspel!\n");
+  printf("Jouw start HP is: %d\n", player.hp);
 
   while (player.hp > 0 && monster.hp > 0)
   {
